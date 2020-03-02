@@ -2,7 +2,7 @@
   "name": "like",
   "connector": "mysql",
   "url": "",
-  "host": "localhost",
+  "host": "like_db",
   "port": 3306,
   "user": "root",
   "password": "1234",
