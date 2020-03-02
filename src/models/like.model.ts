@@ -1,4 +1,4 @@
-import {Entity, model, property} from '@loopback/repository';
+import { Entity, model, property } from '@loopback/repository';
 
 @model()
 export class Like extends Entity {
@@ -23,6 +23,7 @@ export class Like extends Entity {
 
   @property({
     type: 'date',
+    default: () => new Date(),
   })
   date?: string;
 
