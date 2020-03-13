@@ -1,6 +1,6 @@
-create database `like`;
+create database likes;
 
-create table `like.Like`
+create table likes.Like
 (
 	id int auto_increment
 		primary key,

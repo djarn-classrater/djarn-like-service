@@ -2,9 +2,9 @@
   "name": "like",
   "connector": "mysql",
   "url": "",
-  "host": "like_db",
+  "host": "likeDb",
   "port": 3306,
   "user": "root",
   "password": "1234",
-  "database": "like"
+  "database": "likes"
 }
