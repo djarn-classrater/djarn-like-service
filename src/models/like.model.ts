@@ -1,4 +1,4 @@
-import { Entity, model, property } from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Like extends Entity {
@@ -13,20 +13,19 @@ export class Like extends Entity {
     type: 'number',
     required: true,
   })
-  review_id: number;
+  reviewId: number;
 
   @property({
     type: 'string',
     required: true,
   })
-  student_id: string;
+  studentId: string;
 
   @property({
     type: 'date',
     default: () => new Date(),
   })
   date?: string;
-
 
   constructor(data?: Partial<Like>) {
     super(data);
