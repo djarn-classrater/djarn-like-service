@@ -40,7 +40,7 @@ export class LikeController {
         'application/json': {
           schema: getModelSchemaRef(Like, {
             title: 'NewLike',
-            exclude: ['id'],
+            exclude: ['id', 'date'],
           }),
         },
       },
@@ -59,9 +59,9 @@ export class LikeController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Like)) where?: Where<Like>,
+    @param.query.number('reviewId') reviewId: number,
   ): Promise<Count> {
-    return this.likeRepository.count(where);
+    return this.likeRepository.count({ reviewId });
   }
 
   @get('/likes', {
