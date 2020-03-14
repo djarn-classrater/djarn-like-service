@@ -1,4 +1,4 @@
-version: "3.1"
+version: '3.1'
 
 services:
   like:
@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 3003:3000
+    network:
+      - djarn
 
   likeDb:
     image: mysql
@@ -18,3 +20,9 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: 1234
+    network:
+      - djarn
+
+networks:
+  djarn:
+    external: true
