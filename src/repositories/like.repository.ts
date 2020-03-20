@@ -8,9 +8,7 @@ export class LikeRepository extends DefaultCrudRepository<
   typeof Like.prototype.id,
   LikeRelations
 > {
-  constructor(
-    @inject('datasources.like') dataSource: LikeDataSource,
-  ) {
+  constructor(@inject('datasources.like') dataSource: LikeDataSource) {
     super(Like, dataSource);
   }
 }
