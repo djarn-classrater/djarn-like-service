@@ -17,20 +17,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Like} from '../models';
-import {LikeRepository} from '../repositories';
+import { Like } from '../models';
+import { LikeRepository } from '../repositories';
 
 export class LikeController {
   constructor(
     @repository(LikeRepository)
     public likeRepository: LikeRepository,
-  ) {}
+  ) { }
 
   @post('/likes', {
     responses: {
       '200': {
         description: 'Like model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Like)}},
+        content: { 'application/json': { schema: getModelSchemaRef(Like) } },
       },
     },
   })
@@ -40,7 +40,7 @@ export class LikeController {
         'application/json': {
           schema: getModelSchemaRef(Like, {
             title: 'NewLike',
-            exclude: ['id'],
+            exclude: ['id', 'date'],
           }),
         },
       },
@@ -54,14 +54,14 @@ export class LikeController {
     responses: {
       '200': {
         description: 'Like model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Like)) where?: Where<Like>,
+    @param.query.number('reviewId') reviewId: number,
   ): Promise<Count> {
-    return this.likeRepository.count(where);
+    return this.likeRepository.count({ reviewId });
   }
 
   @get('/likes', {
@@ -72,7 +72,7 @@ export class LikeController {
           'application/json': {
             schema: {
               type: 'array',
-              items: getModelSchemaRef(Like, {includeRelations: true}),
+              items: getModelSchemaRef(Like, { includeRelations: true }),
             },
           },
         },
@@ -95,7 +95,7 @@ export class LikeController {
     responses: {
       '200': {
         description: 'Like PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -103,7 +103,7 @@ export class LikeController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Like, {partial: true}),
+          schema: getModelSchemaRef(Like, { partial: true }),
         },
       },
     })
@@ -119,7 +119,7 @@ export class LikeController {
         description: 'Like model instance',
         content: {
           'application/json': {
-            schema: getModelSchemaRef(Like, {includeRelations: true}),
+            schema: getModelSchemaRef(Like, { includeRelations: true }),
           },
         },
       },
@@ -145,7 +145,7 @@ export class LikeController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Like, {partial: true}),
+          schema: getModelSchemaRef(Like, { partial: true }),
         },
       },
     })
