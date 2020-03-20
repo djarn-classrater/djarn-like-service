@@ -24,5 +24,9 @@ RUN npm run build
 # Bind to all network interfaces so that it can be mapped to the host OS
 ENV HOST=0.0.0.0 PORT=3000
 
+# Bind NODE_ENV for run production
+ENV NODE_ENV=production
+
 EXPOSE ${PORT}
+
 CMD [ "node", "." ]
