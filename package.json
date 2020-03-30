@@ -27,6 +27,7 @@
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js --exit && npm run posttest",
     "docker:build": "docker build -t like-service .",
     "docker:run": "docker run -p 3000:3000 -d like-service",
+    "docker:test": "docker-compose -f docker-compose.text.yml build && docker-compose -f docker-compose.test.yml up --exit-code-from like",
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
     "start": "node -r source-map-support/register .",
